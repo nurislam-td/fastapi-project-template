@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: ./docker/prod/Dockerfile # path from context folder 
+    container_name: APP_PROD
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "${API_PORT:-8000}:${API_PORT:-8000}"
+    env_file:
+      - ../../.env # path from docker-compose-file folder
+    command: ["--workers"  , "${API_WORKERS:-1}"  , "--host"  , "0.0.0.0"  , "--port"  , "${API_PORT:-8000}"]
+
+
+
+  db:
+    image: postgres:18
+    volumes:
+      - /docker/volumes/app_db/:/var/lib/postgresql 
+    container_name: APP_PROD_DB
+    env_file:
+      - ../../.env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:5432
+
+
