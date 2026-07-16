@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18
+    volumes:
+      - ../docker/volumes/app_db/:/var/lib/postgresql 
+    container_name: APP_LOCAL_DB
+    env_file:
+      - ../.env
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-postgres}
+    ports:
+      - ${DB_PORT:-5432}:5432
+
+

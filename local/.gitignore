@@ -1,0 +1,4 @@
+*
+!.gitignore
+!makefile.example
+!docker-compose.example.yml

@@ -1,0 +1,5 @@
+.PHONY: do_some_stuff
+
+
+do_some_stuff:
+	echo "do some stuff"
