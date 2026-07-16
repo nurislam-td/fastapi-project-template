@@ -1,6 +1,10 @@
 import uvicorn
 from fastapi import FastAPI
 
+from shared.settings import get_settings
+
+settings = get_settings()
+
 app = FastAPI()
 
 
@@ -12,7 +16,7 @@ async def root():
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True,
+        host=settings.API_HOST,
+        port=settings.API_PORT,
+        reload=settings.API_RELOAD,
     )
