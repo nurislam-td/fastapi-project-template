@@ -8,7 +8,7 @@ settings = get_settings()
 
 
 @lru_cache(maxsize=1)
-def config_logger() -> None:
+def config_logger():
     # root logger for inheritance by third-party packages
     logging.basicConfig(
         level=logging.ERROR,
@@ -19,7 +19,7 @@ def config_logger() -> None:
     logger = logging.getLogger(settings.APP_NAME)
     logger.propagate = False
     if not logger.hasHandlers():
-        logger.setLevel(getattr(logging, settings.LOG_LEVEL, logging.ERROR))
+        logger.setLevel(getattr(logging, settings.LOG_LEVEL, logging.INFO))
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
             "%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -35,5 +35,5 @@ def config_logger() -> None:
 def get_logger(logger: str | None = None) -> logging.Logger:
     """Get cached logger"""
     config_logger()
-    logger = f"{settings.APP_NAME}.{logger}" if logger else settings.APP_NAME
+    logger = f"{settings.APP_NAME}.{logger}" if logger else f"{settings.APP_NAME}"
     return logging.getLogger(logger)

@@ -1,0 +1,6 @@
+from typing import Protocol
+
+
+class IPasswordService(Protocol):
+    def encrypt_pwd(self, input_pwd: str) -> bytes: ...
+    def check_pwd(self, input_pwd: str, db_pwd: bytes) -> bool: ...

@@ -12,6 +12,7 @@ dependencies = [
     "fastapi[standard]>=0.139.0",
     "orjson>=3.11.9",
     "psycopg>=3.3.4",
+    "psycopg2-binary>=2.9.12",
     "pydantic-settings>=2.14.2",
     "pyjwt[crypto]>=2.13.0",
     "sqlalchemy>=2.0.51",
