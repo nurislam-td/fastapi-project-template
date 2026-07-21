@@ -375,6 +375,15 @@ wheels = [
 ]
 
 [[package]]
+name = "diwire"
+version = "1.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/4b/98/bc64311734fc602d0e36db7f36c11fd6d5345ec4ccd968735eb6a8e2cbdb/diwire-1.4.2.tar.gz", hash = "sha256:093306d1db39286ea23685f42c6248c9aae15de16af1f69589c7f00629603217", size = 487826, upload-time = "2026-06-12T06:31:38.876Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/87/be/a2512adf805b81227be2e8411449238949cac95ab3fb51a490c37d9327ce/diwire-1.4.2-py3-none-any.whl", hash = "sha256:d517ce75054254c475f247777e4dbb0701d71a9dc0035d1d27b96322c271f239", size = 100460, upload-time = "2026-06-12T06:31:39.801Z" },
+]
+
+[[package]]
 name = "dnspython"
 version = "2.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -996,6 +1005,7 @@ dependencies = [
     { name = "asyncpg" },
     { name = "bcrypt" },
     { name = "cryptography" },
+    { name = "diwire" },
     { name = "fastapi", extra = ["standard"] },
     { name = "orjson" },
     { name = "psycopg" },
@@ -1020,6 +1030,7 @@ requires-dist = [
     { name = "asyncpg", specifier = ">=0.31.0" },
     { name = "bcrypt", specifier = ">=5.0.0" },
     { name = "cryptography", specifier = ">=49.0.0" },
+    { name = "diwire", specifier = ">=1.4.2" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.139.0" },
     { name = "orjson", specifier = ">=3.11.9" },
     { name = "psycopg", specifier = ">=3.3.4" },

@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import ClassVar, Literal
 
-from contrib.application.exceptions import AppError
+from shared.contrib.application.exceptions import AppError
 
 
 @dataclass(frozen=True, eq=False, slots=True)

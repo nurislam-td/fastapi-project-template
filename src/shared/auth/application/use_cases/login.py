@@ -1,14 +1,13 @@
 from dataclasses import dataclass
 
-from auth.application.dto.jwt import JwtPairDTO, UserPayload
-from auth.application.ports.jwt import (
-    IJwtEncoder,
-    IJwtRepo,
-)
-
+from shared.auth.application.dto.jwt import JwtPairDTO, UserPayload
 from shared.auth.application.exceptions import (
     IncorrectPasswordError,
     UserNotAuthenticatedError,
+)
+from shared.auth.application.ports.jwt import (
+    IJwtEncoder,
+    IJwtRepo,
 )
 from shared.auth.application.ports.password import IPasswordService
 from shared.contrib.application.use_case import IHandler
