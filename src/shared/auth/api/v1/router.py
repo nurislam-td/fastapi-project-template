@@ -1,5 +1,3 @@
-from typing import Any
-
 from diwire import Injected, Scope, resolver_context
 from fastapi import APIRouter
 
@@ -12,14 +10,11 @@ from shared.auth.application.use_cases.signup import SignUpHandler
 router = APIRouter()
 
 
-# class Depends[T]:  # it is temporary stub
-#     async def call(self, *args, **kwargs) -> Any: ...
-
-
-# @router.post("/login")
-# async def login(login: LoginSchema, handler: Depends[LoginHandler]) -> JwtPairDTO:
-#     jwt = await handler.call(email=login.email, password=login.password)
-#     return jwt
+@router.post("/login")
+@resolver_context.inject(scope=Scope.REQUEST)
+async def login(login: LoginSchema, handler: Injected[LoginHandler]) -> JwtPairDTO:
+    jwt = await handler.call(email=login.email, password=login.password)
+    return jwt
 
 
 @router.post("/signup", status_code=201)

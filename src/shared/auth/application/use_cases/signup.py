@@ -23,5 +23,6 @@ class SignUpHandler(IHandler):
         ok = await self.user_service.create_user(
             create_user_converter(create_user, self.pwd)
         )
+        pair = self.jwt_service.create_user_tokens(UserPayload(user_id=ok))
         await self.uow.commit()
-        return self.jwt_service.create_user_tokens(UserPayload(user_id=ok))
+        return pair

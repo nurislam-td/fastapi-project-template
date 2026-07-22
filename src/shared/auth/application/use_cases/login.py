@@ -5,10 +5,7 @@ from shared.auth.application.exceptions import (
     IncorrectPasswordError,
     UserNotAuthenticatedError,
 )
-from shared.auth.application.ports.jwt import (
-    IJwtEncoder,
-    IJwtRepo,
-)
+from shared.auth.application.ports.jwt import IJwtEncoder
 from shared.auth.application.ports.password import IPasswordService
 from shared.contrib.application.use_case import IHandler
 from shared.user.application.ports.repo import IUserRepo
@@ -17,7 +14,6 @@ from shared.user.application.ports.repo import IUserRepo
 @dataclass
 class LoginHandler(IHandler):
     user_repo: IUserRepo
-    jwt_repo: IJwtRepo
     jwt_encoder: IJwtEncoder
     pwd: IPasswordService
 

@@ -4,12 +4,13 @@ from pathlib import Path
 from typing import Any
 
 import jwt
-from auth.application.dto.jwt import JwtPairDTO, UserPayload
-from auth.application.ports.jwt import IJwtDecoder, IJwtEncoder, IJwtRepo
+
+from shared.auth.application.dto.jwt import JwtPairDTO, UserPayload
+from shared.auth.application.ports.jwt import IJwtDecoder, IJwtEncoder
 
 
 @dataclass(slots=True, eq=False, repr=False)
-class JwtService(IJwtEncoder, IJwtDecoder, IJwtRepo):
+class JwtService(IJwtEncoder, IJwtDecoder):
     jwt_alg: str
     access_private_path: Path
     access_public_path: Path
@@ -21,12 +22,12 @@ class JwtService(IJwtEncoder, IJwtDecoder, IJwtRepo):
     def _encode_jwt(
         self,
         payload: dict[str, Any],
-        expire_minutes: int,
+        expire_seconds: int,
         key: str,
     ) -> str:
         to_encode = payload.copy()
         now = datetime.now(tz=UTC)
-        expire = now + timedelta(minutes=expire_minutes)
+        expire = now + timedelta(seconds=expire_seconds)
         to_encode.update(
             exp=expire,
             iat=now,
@@ -39,12 +40,12 @@ class JwtService(IJwtEncoder, IJwtDecoder, IJwtRepo):
     def create_pair(self, payload: dict[str, Any]) -> JwtPairDTO:
         access_token = self._encode_jwt(
             payload=payload,
-            expire_minutes=self.access_token_expire,
+            expire_seconds=self.access_token_expire,
             key=self.access_private_path.read_text(),
         )
         refresh_token = self._encode_jwt(
             payload=payload,
-            expire_minutes=self.refresh_token_expire,
+            expire_seconds=self.refresh_token_expire,
             key=self.refresh_private_path.read_text(),
         )
         return JwtPairDTO(access_token, refresh_token)
@@ -61,7 +62,7 @@ class JwtService(IJwtEncoder, IJwtDecoder, IJwtRepo):
             key=self.access_public_path.read_text(),
         )
 
-    async def get_by_user_id(self, user_id: int) -> JwtPairDTO: ...
-
     def create_user_tokens(self, payload: UserPayload) -> JwtPairDTO:
-        return self.create_pair(payload.as_dict())
+        payload_dict = payload.as_dict()
+        payload_dict = {**payload_dict, "user_id": str(payload.user_id)}
+        return self.create_pair(payload_dict)

@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Literal
 from urllib.parse import quote
 
@@ -28,6 +29,15 @@ class Settings(CoreSettings):
     DB_PASSWORD: str
     DB_NAME: str
     DB_HOST: str
+
+    # JWT
+    ACCESS_PRIVATE_PATH: Path
+    ACCESS_PUBLIC_PATH: Path
+    ACCESS_TOKEN_EXPIRE: int = 15 * 60  # 15 minutes
+    REFRESH_PRIVATE_PATH: Path
+    REFRESH_PUBLIC_PATH: Path
+    REFRESH_TOKEN_EXPIRE: int = 7 * 24 * 60 * 60  # 7 days
+    JWT_ALG: str = "RS256"
 
     @property
     def ASYNC_DATABASE_URL(self) -> str:
