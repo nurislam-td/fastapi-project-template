@@ -2,6 +2,21 @@
 
 ## Prerequisites
 
+Before setting up the development environment, install the following required
+tools and make sure they are available in `PATH`:
+
+- `uv` — Python package and environment manager
+- `git` — version control system
+- `openssl` — RSA key generation utility
+
+Verify the installation:
+
+```sh
+uv --version
+git --version
+openssl version
+```
+
 Installing GNU Make is recommended before working with the project. Make provides short, consistent commands for common tasks such as project setup, dependency synchronization, application startup, and testing. It also keeps implementation details in one shared place, so every developer can run the same workflows without having to remember long commands.
 
 After installing it, verify that Make is available:
