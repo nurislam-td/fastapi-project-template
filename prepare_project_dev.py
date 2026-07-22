@@ -10,6 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 
 ENV_TEMPLATE = PROJECT_ROOT / ".env.local.example"
 ENV_FILE = PROJECT_ROOT / ".env"
+GIT_HOOKS_DIR = PROJECT_ROOT / ".githooks"
 JWT_KEYS_DIR = PROJECT_ROOT / "src" / "crypt" / "jwt"
 JWT_KEY_PAIRS = (
     (JWT_KEYS_DIR / "access_private.pem", JWT_KEYS_DIR / "access_public.pem"),
@@ -36,9 +37,7 @@ def run(*command: str) -> None:
 def generate_rsa_key_pair(private_path: Path, public_path: Path) -> None:
     if private_path.exists() and public_path.exists():
         key_pair_name = private_path.stem.removesuffix("_private")
-        print(
-            f"RSA key pair {key_pair_name} already exists and was left unchanged."
-        )
+        print(f"RSA key pair {key_pair_name} already exists and was left unchanged.")
         return
 
     if private_path.exists() or public_path.exists():
@@ -87,6 +86,18 @@ def generate_jwt_keys() -> None:
         generate_rsa_key_pair(private_path, public_path)
 
 
+def make_git_hooks_executable() -> None:
+    if not GIT_HOOKS_DIR.is_dir():
+        print(f"Error: {GIT_HOOKS_DIR} was not found.", file=sys.stderr)
+        raise SystemExit(1)
+
+    for hook_path in GIT_HOOKS_DIR.iterdir():
+        if hook_path.is_file():
+            hook_path.chmod(hook_path.stat().st_mode | 0o111)
+
+    print("Git hooks were made executable.")
+
+
 def main() -> None:
     require_command("uv")
     require_command("git")
@@ -103,6 +114,7 @@ def main() -> None:
         print("Created the .env file.")
 
     run("uv", "sync")
+    make_git_hooks_executable()
     run("git", "config", "--local", "core.hooksPath", ".githooks")
     generate_jwt_keys()
 

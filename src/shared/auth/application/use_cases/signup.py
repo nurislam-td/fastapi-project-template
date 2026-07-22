@@ -20,9 +20,9 @@ class SignUpHandler(IHandler):
     async def call(self, create_user: SignUpDTO) -> JwtPairDTO:
         if await self.user_service.check_user_email_exists(email=create_user.email):
             raise UserAlreadyExistsError(email=create_user.email)
-        ok = await self.user_service.create_user(
+        user_id = await self.user_service.create_user(
             create_user_converter(create_user, self.pwd)
         )
-        pair = self.jwt_service.create_user_tokens(UserPayload(user_id=ok))
+        pair = self.jwt_service.create_user_tokens(UserPayload(user_id=user_id))
         await self.uow.commit()
         return pair
