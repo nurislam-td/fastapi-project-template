@@ -1,4 +1,4 @@
-.PHONY: app sync setup
+.PHONY: app sync setup migrations migrate downgrade
 
 -include local/makefile
 
