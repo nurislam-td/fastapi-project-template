@@ -153,6 +153,7 @@ activemq-data/
 .env
 .envrc
 .venv
+src/crypt/jwt/*.pem
 env/
 venv/
 ENV/
