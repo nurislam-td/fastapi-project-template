@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:18
     volumes:
-      - ../docker/volumes/app_db/:/var/lib/postgresql 
+      - app_db_data:/var/lib/postgresql 
     container_name: APP_LOCAL_DB
     env_file:
       - ../.env
@@ -14,3 +14,6 @@ services:
       - ${DB_PORT:-5432}:5432
 
 
+
+volumes:
+  app_db_data: {}
