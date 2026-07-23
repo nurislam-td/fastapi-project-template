@@ -4,16 +4,16 @@ from diwire import Container, Lifetime, Scope
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from setup.db.session import sessionmaker
-from shared.auth.application.ports.jwt import IJwtEncoder
-from shared.auth.application.ports.password import IPasswordService
-from shared.auth.infrastructure.adapters.jwt import JwtService
-from shared.auth.infrastructure.adapters.pwd import PasswordService
+from shared.features.auth.application.ports.jwt import IJwtEncoder
+from shared.features.auth.application.ports.password import IPasswordService
+from shared.features.auth.infrastructure.adapters.jwt import JwtService
+from shared.features.auth.infrastructure.adapters.pwd import PasswordService
 from shared.contrib.application.use_case import IUnitOfWork
 from shared.contrib.utils.logger import get_logger
 from shared.settings import get_settings
 from shared.settings.base import Settings
-from shared.user.application.ports.repo import IUserRepo
-from shared.user.infrastructure.adapters.repo import UserRepo
+from shared.features.user.application.ports.repo import IUserRepo
+from shared.features.user.infrastructure.adapters.repo import UserRepo
 
 logger = get_logger(__name__)
 

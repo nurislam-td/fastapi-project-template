@@ -4,11 +4,11 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from shared.user.application.dto.user import CreateUserDTO, UserDTO
-from shared.user.application.exceptions import UserNotExistsError
-from shared.user.application.ports.repo import IUserRepo
-from shared.user.infrastructure.converters.user import user_converter
-from shared.user.infrastructure.models import User
+from shared.features.user.application.dto.user import CreateUserDTO, UserDTO
+from shared.features.user.application.exceptions import UserNotExistsError
+from shared.features.user.application.ports.repo import IUserRepo
+from shared.features.user.infrastructure.converters.user import user_converter
+from shared.features.user.infrastructure.models import User
 
 
 @dataclass(slots=True, eq=False, repr=False)

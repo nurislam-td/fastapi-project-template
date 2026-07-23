@@ -1,6 +1,6 @@
 from typing import Any, Protocol
 
-from shared.auth.application.dto.jwt import JwtPairDTO, UserPayload
+from shared.features.auth.application.dto.jwt import JwtPairDTO, UserPayload
 
 
 class IJwtEncoder(Protocol):

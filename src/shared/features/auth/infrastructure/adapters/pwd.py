@@ -1,6 +1,6 @@
 import bcrypt
 
-from shared.auth.application.ports.password import IPasswordService
+from shared.features.auth.application.ports.password import IPasswordService
 
 
 class PasswordService(IPasswordService):

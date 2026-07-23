@@ -1,11 +1,11 @@
 from diwire import Injected, Scope, resolver_context
 from fastapi import APIRouter
 
-from shared.auth.api.v1.schemas import LoginSchema, SignUpSchema
-from shared.auth.application.dto.jwt import JwtPairDTO
-from shared.auth.application.dto.user import SignUpDTO
-from shared.auth.application.use_cases.login import LoginHandler
-from shared.auth.application.use_cases.signup import SignUpHandler
+from shared.features.auth.api.v1.schemas import LoginSchema, SignUpSchema
+from shared.features.auth.application.dto.jwt import JwtPairDTO
+from shared.features.auth.application.dto.user import SignUpDTO
+from shared.features.auth.application.use_cases.login import LoginHandler
+from shared.features.auth.application.use_cases.signup import SignUpHandler
 
 router = APIRouter()
 

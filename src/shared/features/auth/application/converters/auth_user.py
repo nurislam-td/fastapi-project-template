@@ -1,7 +1,7 @@
-from shared.auth.application.dto.user import SignUpDTO
-from shared.auth.application.ports.password import IPasswordService
-from shared.user.application.dto.user import CreateUserDTO as UserCreateUserDTO
-from shared.user.application.dto.user import Gender as UserGender
+from shared.features.auth.application.dto.user import SignUpDTO
+from shared.features.auth.application.ports.password import IPasswordService
+from shared.features.user.application.dto.user import CreateUserDTO as UserCreateUserDTO
+from shared.features.user.application.dto.user import Gender as UserGender
 
 
 def create_user_converter(auth: SignUpDTO, pwd: IPasswordService) -> UserCreateUserDTO:

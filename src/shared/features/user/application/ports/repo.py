@@ -1,7 +1,7 @@
 from typing import Protocol
 from uuid import UUID
 
-from shared.user.application.dto.user import CreateUserDTO, UserDTO
+from shared.features.user.application.dto.user import CreateUserDTO, UserDTO
 
 
 class IUserRepo(Protocol):

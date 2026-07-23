@@ -5,8 +5,8 @@ from typing import Any
 
 import jwt
 
-from shared.auth.application.dto.jwt import JwtPairDTO, UserPayload
-from shared.auth.application.ports.jwt import IJwtDecoder, IJwtEncoder
+from shared.features.auth.application.dto.jwt import JwtPairDTO, UserPayload
+from shared.features.auth.application.ports.jwt import IJwtDecoder, IJwtEncoder
 
 
 @dataclass(slots=True, eq=False, repr=False)

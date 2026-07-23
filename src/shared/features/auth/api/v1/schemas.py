@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field
 
-from shared.auth.application.dto.user import Gender
+from shared.features.auth.application.dto.user import Gender
 
 
 class LoginSchema(BaseModel):

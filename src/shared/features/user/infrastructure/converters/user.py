@@ -1,5 +1,5 @@
-from shared.user.application.dto.user import Gender, UserDTO
-from shared.user.infrastructure.models import User
+from shared.features.user.application.dto.user import Gender, UserDTO
+from shared.features.user.infrastructure.models import User
 
 
 def user_converter(user: User) -> UserDTO:
