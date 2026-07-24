@@ -1,5 +1,10 @@
 # Development Setup
 
+## Architecture Rules
+
+When developing or modifying this project, you must follow the
+[project architecture rules](docs/rules/architecture.md).
+
 ## Prerequisites
 
 Before setting up the development environment, install the following required
