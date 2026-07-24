@@ -13,6 +13,7 @@ tools and make sure they are available in `PATH`:
 - `uv` — Python package and environment manager
 - `git` — version control system
 - `openssl` — RSA key generation utility
+- `just` — project command runner  [gh-docs](https://github.com/casey/just#packages)
 
 Verify the installation:
 
@@ -20,27 +21,23 @@ Verify the installation:
 uv --version
 git --version
 openssl version
+just --version
 ```
 
-Installing GNU Make is recommended before working with the project. Make provides short, consistent commands for common tasks such as project setup, dependency synchronization, application startup, and testing. It also keeps implementation details in one shared place, so every developer can run the same workflows without having to remember long commands.
+[About just autocompletion](docs/about_just_autocomplete.md)
 
-After installing it, verify that Make is available:
-
-```sh
-make --version
-```
 
 ## Project Setup
 
 ```sh
-make setup
+just setup
 ```
 
 ## Local Configuration
 
 After setup, copy any configuration files you need from `local` and remove the `.example` suffix:
 
-- `local/makefile.example` → `local/makefile`
+- `local/justfile.example` → `local/justfile`
 - `local/docker-compose.example.yml` → `local/docker-compose.yml`
 
 These optional files are ignored by Git 
