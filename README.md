@@ -25,7 +25,7 @@ just --version
 ```
 
 [About just autocompletion](docs/about_just_autocomplete.md)
-
+[About `just-lsp` — lsp for justfiles](https://github.com/terror/just-lsp#installation)
 
 ## Project Setup
 
