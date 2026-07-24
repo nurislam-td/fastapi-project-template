@@ -1,13 +1,17 @@
 #!/bin/sh
 set -eu
 
+diff_before_ruff=$(git diff --no-ext-diff --binary | git hash-object --stdin)
+
 echo "Running ruff check --fix..."
 uv run ruff check --fix
 
 echo "Running ruff format..."
 uv run ruff format
 
-if ! git diff --quiet; then
+diff_after_ruff=$(git diff --no-ext-diff --binary | git hash-object --stdin)
+
+if [ "$diff_before_ruff" != "$diff_after_ruff" ]; then
     echo ""
     echo "Ruff changed files."
     echo "Please review changes, run git add, then commit again."
