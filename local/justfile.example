@@ -1,3 +1,0 @@
-# Example for local justfile
-do_some_stuff:
-    echo "do some stuff"
