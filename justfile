@@ -48,3 +48,7 @@ unsafe-lint *flags:
 # Run Ruff format 
 format *flags: 
     uv run ruff format . {{flags}}
+
+# Run static type checking.
+typecheck:
+    uv run pyright src
