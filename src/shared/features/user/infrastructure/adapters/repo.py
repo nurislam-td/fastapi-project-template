@@ -35,7 +35,7 @@ class UserRepo(IUserRepo):
     async def check_user_email_exists(self, email: str) -> bool:
         q = select(User.id).where(User.email == email)
         u = await self.session.scalar(q)
-        return False if u is None else True
+        return u is not None
 
     async def create_user(self, user: CreateUserDTO) -> UUID:
         u = User(

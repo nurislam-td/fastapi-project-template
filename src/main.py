@@ -32,7 +32,7 @@ add_request_context(container)
 
 
 @app.get("/")
-async def health_check():
+async def health_check() -> dict[str, str]:
     return {"status": "OK"}
 
 

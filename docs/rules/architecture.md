@@ -77,8 +77,7 @@ Use the following structure for every feature:
 4. For every feature outside `shared`, register each service interface and its concrete implementation in:
 
    ```python
-   def register_dependencies(container: Container) -> None:
-       ...
+   def register_dependencies(container: Container) -> None: ...
    ```
 
    Define this function in `features/<feature>/infrastructure/di/register.py`.

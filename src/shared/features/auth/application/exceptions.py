@@ -11,7 +11,7 @@ class UserNotAuthenticatedError(AppError):
     id: int | None = field(default=None)
 
     @property
-    def message(self):
+    def message(self) -> str:
         not_exists_msg = ""
         if self.email:
             not_exists_msg = f"with that email {self.email}"
@@ -27,7 +27,7 @@ class UserAlreadyExistsError(AppError):
     id: int | None = field(default=None)
 
     @property
-    def message(self):
+    def message(self) -> str:
         not_exists_msg = ""
         if self.email:
             not_exists_msg = f"with that email {self.email}"
@@ -41,5 +41,5 @@ class IncorrectPasswordError(AppError):
     reason_code: ClassVar[Literal["INCORRECT_PASSWORD"]] = "INCORRECT_PASSWORD"
 
     @property
-    def message(self):
+    def message(self) -> Literal["Incorrect password"]:
         return "Incorrect password"

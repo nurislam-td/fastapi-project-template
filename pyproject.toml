@@ -10,7 +10,7 @@ dependencies = [
     "bcrypt>=5.0.0",
     "cryptography>=49.0.0",
     "diwire>=1.4.2",
-    "fastapi[standard]>=0.139.0",
+    "fastapi[standard]>=0.139.2",
     "orjson>=3.11.9",
     "psycopg>=3.3.4",
     "psycopg2-binary>=2.9.12",
@@ -25,5 +25,20 @@ dev = [
     "mypy>=2.3.0",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
-    "ruff>=0.15.21",
+    "ruff>=0.16.0",
 ]
+[tool.ruff]
+target-version = "py312"
+# Exclude a variety of commonly ignored directories.
+extend-exclude = [
+    "*/migrations/*.py",
+    "staticfiles/*",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["B024", "D102", "D107", "D100", "D" , "CPY001", "COM812"]
+
+
+[tool.ruff.lint.per-file-ignores]
+"prepare_project_dev.py" = ["ALL"]

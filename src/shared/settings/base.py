@@ -40,12 +40,12 @@ class Settings(CoreSettings):
     JWT_ALG: str = "RS256"
 
     @property
-    def ASYNC_DATABASE_URL(self) -> str:
+    def ASYNC_DATABASE_URL(self) -> str:  # noqa: N802
         password = quote(self.DB_PASSWORD, safe="")
         return f"postgresql+asyncpg://{self.DB_USER}:{password}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
     @property
-    def SYNC_DATABASE_URL(self) -> str:
+    def SYNC_DATABASE_URL(self) -> str:  # noqa: N802
         password = quote(self.DB_PASSWORD, safe="")
         return f"postgresql://{self.DB_USER}:{password}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 

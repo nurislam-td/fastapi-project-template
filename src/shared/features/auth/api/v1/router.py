@@ -13,8 +13,7 @@ router = APIRouter()
 @router.post("/login")
 @resolver_context.inject(scope=Scope.REQUEST)
 async def login(login: LoginSchema, handler: Injected[LoginHandler]) -> JwtPairDTO:
-    jwt = await handler.call(email=login.email, password=login.password)
-    return jwt
+    return await handler.call(email=login.email, password=login.password)
 
 
 @router.post("/signup", status_code=201)

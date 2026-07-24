@@ -8,7 +8,7 @@ settings = get_settings()
 
 
 @lru_cache(maxsize=1)
-def config_logger():
+def config_logger() -> None:
     # root logger for inheritance by third-party packages
     logging.basicConfig(
         level=logging.ERROR,

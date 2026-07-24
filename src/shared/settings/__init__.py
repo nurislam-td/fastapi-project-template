@@ -10,11 +10,11 @@ __all__ = ["get_settings"]
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
-    core_settings = CoreSettings()  # type: ignore
+    core_settings = CoreSettings()  # pyright: ignore[reportCallIssue]
     match core_settings.ENV:
         case "dev":
-            return DevSettings()  # type: ignore
+            return DevSettings()  # pyright: ignore[reportCallIssue]
         case "prod":
-            return ProdSettings()  # type: ignore
+            return ProdSettings()  # pyright: ignore[reportCallIssue]
         case _:
-            return LocalSettings()  # type: ignore
+            return LocalSettings()  # pyright: ignore[reportCallIssue]

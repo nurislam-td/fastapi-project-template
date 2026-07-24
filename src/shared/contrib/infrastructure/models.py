@@ -19,7 +19,7 @@ mapper_registry = registry(metadata=sa.MetaData(naming_convention=convention))
 
 
 class BaseModel(DeclarativeBase):
-    """An abstract base model that save metadata, all models must inherit from this class."""
+    """An abstract base model that save metadata, all models must inherit from this class."""  # noqa: E501
 
     registry = mapper_registry
     metadata = mapper_registry.metadata
@@ -34,11 +34,13 @@ class BaseModel(DeclarativeBase):
 
 
 class TimedBaseModel(BaseModel):
-    """An abstract base model that adds created_at and updated_at timestamp fields to the model."""
+    """An abstract base model that adds created_at and updated_at timestamp fields to the model."""  # noqa: E501
 
     __abstract__ = True
     created_at: Mapped[datetime] = mapped_column(
-        sa.types.DateTime, nullable=False, server_default=sa.func.now()
+        sa.types.DateTime,
+        nullable=False,
+        server_default=sa.func.now(),
     )
     updated_at: Mapped[datetime] = mapped_column(
         sa.types.DateTime,

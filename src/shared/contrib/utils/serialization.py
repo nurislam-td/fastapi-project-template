@@ -4,15 +4,15 @@ import orjson  # fastest lib for json serialization on 2026.07.17
 
 
 @overload
-def json_dumps(data: Any) -> bytes: ...
+def json_dumps(data: Any) -> bytes: ...  # noqa: ANN401
 
 
 @overload
-def json_dumps(data: Any, mode: Literal["str"]) -> str: ...
+def json_dumps(data: Any, mode: Literal["str"]) -> str: ...  # noqa: ANN401
 
 
 @overload
-def json_dumps(data: Any, mode: Literal["bytes"]) -> bytes: ...
+def json_dumps(data: Any, mode: Literal["bytes"]) -> bytes: ...  # noqa: ANN401
 
 
 def json_dumps(data: Any, mode: Literal["str", "bytes"] = "bytes") -> str | bytes:
@@ -24,7 +24,7 @@ def json_dumps(data: Any, mode: Literal["str", "bytes"] = "bytes") -> str | byte
 
     Returns:
         JSON representation of the given object as UTF-8 encoded bytes or str.
-    """
+    """  # noqa: E501
     match mode:
         case "str":
             return orjson.dumps(data).decode(encoding="utf-8")

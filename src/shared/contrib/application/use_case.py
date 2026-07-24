@@ -8,4 +8,4 @@ class IUnitOfWork(Protocol):
 class IHandler(Protocol):
     uow: IUnitOfWork
 
-    async def call(self, *args, **kwargs) -> Any: ...
+    async def call(self, *args, **kwargs) -> Any: ...  # noqa: ANN002, ANN003, ANN401
